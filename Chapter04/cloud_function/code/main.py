@@ -17,7 +17,7 @@ from google.cloud import storage
 
 # Name of the bucket storing the template files
 # Please replace this with your own random name
-BUCKET_NAME = "resume_xew878w6e"
+BUCKET_NAME = "santi-bucket-madrid"
 DEFAULT_TEMPLATE_NAME = "english.html"
 
 def load_resume(template):
@@ -33,7 +33,6 @@ def load_resume(template):
   
   # Open the bucket
   bucket = storage_client.bucket(BUCKET_NAME)
-  
   # And get to the blob containing our HTML template
   blob = bucket.blob(template)
   
