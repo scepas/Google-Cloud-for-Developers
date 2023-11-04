@@ -53,7 +53,7 @@ gcloud run services add-iam-policy-binding resume-server \
 ## Invoke from command line
 gcloud functions call --region=europe-southwest1 --gen2 resume-server
 
-## invoke from curl (DOES NOT WORK -> Your client does not have permission to the requested URL)
+## invoke from curl
 
 curl -H \
 "Authorization: Bearer $(gcloud auth print-identity-token)" \
@@ -69,4 +69,12 @@ To authenticate using Application Default Credentials:
 Then you can call also the function with python:
 ```bash
 python3 main.py
+```
+
+## Simulate traffic
+```bash
+while sleep $[ ( $RANDOM % 5 ) + 1 ]; \
+do  curl -H "Authorization: Bearer $(gcloud auth print-identity-token)" https://resume-server-3d4lcpox6q-no.a.run.app; \
+done
+
 ```

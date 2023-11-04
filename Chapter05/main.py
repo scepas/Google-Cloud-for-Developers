@@ -15,6 +15,10 @@
 
 from flask import Flask, request
 
+
+
+# The default template to use.
+
 DEFAULT_TEMPLATE_NAME = "english.html"
 
 app = Flask(__name__)
@@ -93,4 +97,5 @@ def get():
 # This is only used when running locally. When running live, gunicorn runs
 # the application.
 if __name__ == "__main__":
-    app.run(debug=True, host="0.0.0.0", port=int(os.environ.get("PORT", 8080)))
+    from os import environ
+    app.run(debug=True, host="0.0.0.0", port=int(environ.get("PORT", 8080)))
